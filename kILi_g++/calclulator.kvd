@@ -1,0 +1,10 @@
+print enter first num; endl;
+ivar input 0;
+print enter second num; endl;
+ivar input 1;
+ivar sum 2 ivar 0 ivar 1;
+ivar print 0;
+print +;
+ivar print 1;
+print =;
+ivar print 2;

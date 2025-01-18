@@ -1,5 +1,5 @@
 // * kilio.cpp
-// * (input) and output of kIL
+// * input and output of kIL
 #include <lang\kilio.h>
 
 void print()

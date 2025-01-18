@@ -1,5 +1,5 @@
 // * kilio.h
-// * (input) and output of kIL
+// * input and output of kIL
 #ifndef KILIO_H
 #define KILIO_H
 

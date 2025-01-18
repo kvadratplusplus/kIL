@@ -42,4 +42,3 @@ More help materials in the help folder.
 # Links
 Telegram channel about development: https://t.me/krasnyykvadratdev  
 Youtube channel: https://www.youtube.com/@kraskvad
-

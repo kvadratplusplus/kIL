@@ -28,11 +28,15 @@ int main(int argc, char* argv[])
     while (file >> std::ws && !file.eof())
     {
         file >> word;
-        // if(word == "int:")
-        // {
-        //     initInt();
-        // }
-        if(word == "print:")
+        if(word == "ivar")
+        {
+            var(false);
+        }
+        else if(word == "fvar")
+        {
+            var(true);
+        }
+        else if(word == "print")
         {
             print();
         }
@@ -40,39 +44,39 @@ int main(int argc, char* argv[])
         {
             endLine();
         }
-        else if(word == "sum:")
+        else if(word == "sum")
         {
             intCalc(1);
         }
-        else if(word == "dif:")
+        else if(word == "dif")
         {
             intCalc(2);
         }
-        else if(word == "mul:")
+        else if(word == "mul")
         {
             intCalc(3);
         }
-        else if(word == "div:")
+        else if(word == "div")
         {
             intCalc(4);
         }
-        else if(word == "fsum:")
+        else if(word == "fsum")
         {
             floatCalc(1);
         }
-        else if(word == "fdif:")
+        else if(word == "fdif")
         {
             floatCalc(2);
         }
-        else if(word == "fmul:")
+        else if(word == "fmul")
         {
             floatCalc(3);
         }
-        else if(word == "fdiv:")
+        else if(word == "fdiv")
         {
             floatCalc(4);
         }
-        else if(word == "sleep:")
+        else if(word == "sleep")
         {
             sleep();
         }

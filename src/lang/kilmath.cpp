@@ -43,8 +43,8 @@ void intCalc(int mode)  // * calculate integers
 void floatCalc(int mode)    // * calculate floats
 {
     char ch;
-    double total = 0;
-    double num = 0;
+    float total = 0;
+    float num = 0;
 
     file >> total;
     while (file.get(ch))

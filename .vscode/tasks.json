@@ -7,7 +7,7 @@
 			"command": "D:\\PF\\mingw64\\bin\\g++.exe",    // ! PATH TO YOUR G++
 			"args": [
 				"-fdiagnostics-color=always",
-				"-g",
+				//"-g",
 				"-std=c++20",
 				"${workspaceFolder}\\src\\*.cpp",
 				"${workspaceFolder}\\src\\lang\\*.cpp",
@@ -31,7 +31,7 @@
 			"command": "D:\\PF\\mingw64\\bin\\clang++.exe",    // ! PATH TO YOUR CLANG++
 			"args": [
 				"-fdiagnostics-color=always",
-				"-g",
+				//"-g",
 				"-std=c++20",
 				"${workspaceFolder}\\src\\*.cpp",
 				"${workspaceFolder}\\src\\lang\\*.cpp",
