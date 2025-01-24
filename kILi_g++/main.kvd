@@ -1,10 +1,1 @@
-// simple cycle
-ivar set 0 0;
-
-
-if 0 ivar 0 < inum 5
-    ivar print 0; endl;
-    ivar ++ 0;
-    goto -78;
-    // go 78 symbols back
-# 0
+print hello world;
