@@ -2,8 +2,8 @@
 // * variables of kIL
 #include <lang\kilvars.h>
 
-int intVars[10];
-float floatVars[10];
+std::vector<int> intVars;
+std::vector<float> floatVars;
 
 void var(bool isFloat)
 {
@@ -20,6 +20,10 @@ void var(bool isFloat)
     else if(func == "input")
     {
         inputVar(isFloat);
+    }
+    else if(func == "++")
+    {
+        addOne(isFloat);
     }
     else if(func == "sum")
     {
@@ -45,11 +49,18 @@ void var(bool isFloat)
     }
 }
 
+void addOne(bool isFloatArr)
+{
+    int address;
+    char ch;
+    file >> address >> ch;
+    if(isFloatArr) floatVars[address]++;
+    else intVars[address]++;
+}
+
 void inputVar(bool isFloatArr)
 {
     int address;
-    int inum;
-    float fnum;
     char ch;
 
     while(file.get(ch))
@@ -58,13 +69,40 @@ void inputVar(bool isFloatArr)
         file >> address;
         if(isFloatArr)
         {
+            float fnum;
             std::cin >> fnum;
-            floatVars[address] = fnum;
+
+            if(address < floatVars.size() && address >= 0)
+            {
+                floatVars[address] = fnum;
+            }
+            else if(address > floatVars.size())
+            {
+                floatVars.resize(address + 1);
+                floatVars[address] = fnum;
+            }
+            else
+            {
+                floatVars.push_back(fnum);
+            }
         }
         else
         {
+            int inum;
             std::cin >> inum;
-            intVars[address] = inum;
+            if(address < intVars.size() && address >= 0)
+            {
+                intVars[address] = inum;
+            }
+            else if(address > intVars.size())
+            {
+                intVars.resize(address + 1);
+                intVars[address] = inum;
+            }
+            else
+            {
+                intVars.push_back(inum);
+            }
         }
     }
 }
@@ -72,40 +110,67 @@ void inputVar(bool isFloatArr)
 void setVar(bool isFloatArr)
 {
     int address;
-    float fnumber;
-    int inumber;
+    float fnum;
+    int inum;
     char ch;
     while(file.get(ch))
     {
-        if(ch == ';') break;
+        if(ch == ';')
+        {
+            break;
+        }
         file >> address;
         if(isFloatArr)
-            file >> fnumber;
+        {
+            file >> fnum;
+        }
         else
-            file >> inumber;
+        {
+            file >> inum;
+        }
     }
     if(isFloatArr)
-        floatVars[address] = fnumber;
+    {
+        if(address < floatVars.size() && address >= 0)
+        {
+            floatVars[address] = fnum;
+        }
+        else if(address >= floatVars.size())
+        {
+            floatVars.resize(address + 1);
+            floatVars[address] = fnum;
+        }
+    }
     else
-        intVars[address] = inumber;
+    {
+        if(address < intVars.size() && address >= 0)
+        {
+            intVars[address] = inum;
+        }
+        else if(address >= intVars.size())
+        {
+            intVars.resize(address + 1);
+            intVars[address] = inum;
+        }
+    }
 }
 
 void printVar(bool isFloatArr)
 {
     int address;
     char ch;
-    while(file.get(ch))
-    {
-        if(ch == ';') break;
-        file >> address;
-    }
+    file >> address >> ch;
     if(isFloatArr)
-        std::cout << floatVars[address];
+    {
+        std::cout << floatVars.at(address);
+    }
     else
-        std::cout << intVars[address];
+    {
+        std::cout << intVars.at(address);
+    }
 }
 
-void varCalc(int mode, bool isFloat)
+void varCalc(int mode, bool isFloatArr)
 {
     int changeVariableAddress;
     std::string type;
@@ -162,7 +227,7 @@ void varCalc(int mode, bool isFloat)
             }
             else if(mode == 4 && intVars[address] == 0)
             {
-                std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+                std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
                 std::exit(1);
             }
         }
@@ -178,7 +243,7 @@ void varCalc(int mode, bool isFloat)
             }
             else if(mode == 4 && floatVars[address] == 0)
             {
-                std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+                std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
                 std::exit(1);
             }
         }
@@ -194,7 +259,7 @@ void varCalc(int mode, bool isFloat)
             }
             else if(mode == 4 && inum == 0)
             {
-                std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+                std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
                 std::exit(1);
             }
         }
@@ -210,7 +275,7 @@ void varCalc(int mode, bool isFloat)
             }
             else if(mode == 4 && fnum == 0)
             {
-                std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+                std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
                 std::exit(1);
             }
         }
@@ -221,6 +286,21 @@ void varCalc(int mode, bool isFloat)
             std::exit(1);
         }
     }
-    if(isFloat) floatVars[changeVariableAddress] = total;
+    if(isFloatArr) floatVars[changeVariableAddress] = total;
     else intVars[changeVariableAddress] = total;
+}
+
+void showVariables()
+{
+    std::cout << "Initialized float vars:" << std::endl;
+    for(int i = 0; i < floatVars.size(); i++)
+    {
+        std::cout << i << " " << floatVars.at(i) << std::endl;
+    }
+
+    std::cout << "Initialized int vars:" << std::endl;
+    for(int i = 0; i < intVars.size(); i++)
+    {
+        std::cout << i << " " << intVars.at(i) << std::endl;
+    }
 }

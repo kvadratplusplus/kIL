@@ -5,13 +5,16 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include <lang\kilio.h>
-#include <lang\kilmath.h>
 #include <lang\kilvars.h>
+#include <lang\killogic.h>
+
+#include <lang\kilmath.h>
 
 extern std::ifstream file;
-extern int intVars[10];
-extern float floatVars[10];
+extern std::vector<int> intVars;
+extern std::vector<float> floatVars;
 
 #endif

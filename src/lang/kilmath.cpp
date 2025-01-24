@@ -29,7 +29,7 @@ void intCalc(int mode)  // * calculate integers
         }
         else if(mode == 4 && num == 0)
         {
-            std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+            std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
             std::exit(1);
         }
     }
@@ -63,18 +63,10 @@ void floatCalc(int mode)    // * calculate floats
         }
         else if(mode == 4 && num == 0)
         {
-            std::cerr << "ERROR KVD3: dividing by 0" << std::endl;
+            std::cerr << "ERROR KVD3: Dividing by 0" << std::endl;
             std::exit(1);
         }
     }
     std::cout << total;
 }
 
-void sleep()
-{
-    char ch;
-    long long time;
-    file >> time;
-    file >> ch;
-    std::this_thread::sleep_for(std::chrono::milliseconds(time));
-}

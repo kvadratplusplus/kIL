@@ -1,0 +1,5 @@
+ERROR KVD1: File "fileName.kvd" is not exist
+ERROR KVD2: Unknown command
+ERROR KVD3: Dividing by 0
+ERROR KVD4: Unknown operation on variables
+ERROR KVD5: Unknown variable type

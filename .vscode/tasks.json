@@ -38,7 +38,7 @@
 				"-I",
                 "${workspaceFolder}\\include",
 				"-o",
-				"${workspaceFolder}\\kILi_clang++\\kILi.exe"
+				"${workspaceFolder}\\kILi_clang++\\kILi.exe",
 			],
 			"options": {
 				"cwd": "${fileDirname}"

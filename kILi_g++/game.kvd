@@ -1,0 +1,8 @@
+print program writed by kvadrat; endl;
+
+ivar input 0;
+if 0 ivar 0 != inum 12
+    print you lose; endl;
+    goto -81;
+# 0
+print you win;

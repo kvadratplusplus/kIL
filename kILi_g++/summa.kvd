@@ -1,3 +1,6 @@
+print program writed by kvadrat; endl;
+
+ivar set 2 0;
 print enter first num; endl;
 ivar input 0;
 print enter second num; endl;

@@ -2,12 +2,14 @@
 // * kIL interpreter
 #include <main.h>
 
+
 std::ifstream file;
 
 int main(int argc, char* argv[])
 {
     std::string word;
     std::string fileName;
+    bool showInitedVariables = false;
     
     if(argc == 1)
     {
@@ -17,7 +19,12 @@ int main(int argc, char* argv[])
     {
         fileName = argv[1];
     }
-    
+    if (argc == 3 && std::string(argv[2]) == "-showvars")
+    {
+        fileName = argv[1];
+        showInitedVariables = true;
+    }
+
     file.open(fileName + ".kvd");
     if(!file.is_open())
     {
@@ -80,18 +87,32 @@ int main(int argc, char* argv[])
         {
             sleep();
         }
+        else if(word == "if")
+        {
+            ifLogic();
+        }
+        else if(word == "goto")
+        {
+            kilGoto();
+        }
+
+        else if(word == "#")
+        {
+            int a;
+            file >> a;
+            continue;
+        }
         else if(word == "//")
         {
             char ch;
             while (file.get(ch))
             {
-                if (ch == ';')
+                if (ch == '\n')
                 {
                     break;
                 }
             }
         }
-
         else
         {
             std::cout << "ERROR KVD2: Unknown command: " << word << std::endl;
@@ -100,5 +121,10 @@ int main(int argc, char* argv[])
     }
 
     file.close();
+
+    if(showInitedVariables)
+    {
+        showVariables();
+    }
     return 0;
 }
